@@ -67,17 +67,19 @@ class OT_TestOpenFilebrowser(Operator, ImportHelper):
                 me.vertices[atomCount].select = True
                 
                 #add vertex to proper atom group
-                if lineArray[2].find("H") != -1:
+                AtomName = lineArray[2]
+                
+                if AtomName[0] == "H":
                     hydrogens.append(atomCount)
-                elif lineArray[2].find("C") != -1:
+                elif AtomName[0] == "C":
                     carbons.append(atomCount)
-                elif lineArray[2].find("N") != -1:
+                elif AtomName[0] == "N":
                     nitrogens.append(atomCount)
-                elif lineArray[2].find("O") != -1:
+                elif AtomName[0] == "O":
                     oxygens.append(atomCount)
-                elif lineArray[2].find("P") != -1:
+                elif AtomName[0] == "P":
                     phosphorous.append(atomCount)
-                elif lineArray[2].find("SD") != -1:
+                elif AtomName[0] == "S":
                     sulfur.append(atomCount)
                 
                 selectedVerts = [v for v in bpy.context.active_object.data.vertices if v.select]
